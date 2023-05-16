@@ -1,38 +1,49 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Test = () => {
-  const [text, setText] = useState(0);
+  const [firstName, setFirstName] = useState("...");
+  const [lastName, setLastName] = useState("");
+  const [job, setJob] = useState("...!");
 
-  const increase = () => {
-    setText(text + 1);
+  const changeFirstNameHandler = (event) => {
+    setFirstName(event.target.value);
   };
-  const reset = () => {
-    setText(0);
+  const changeLastNameHandler = (event) => {
+    setLastName(event.target.value);
+  };
+  const changeJobHandler = (event) => {
+    setJob(event.target.value);
   };
 
-  const remove = () => {
-    if (text > 0) {
-      setText(text - 1);
-    }
-  };
   return (
-    <div>
-      <div className="container">
-        <h2>Sheep Counter</h2>
-        <div className="text">{"🐑".repeat(text)}</div>
-        <div className="mini-box">
-          <div className="increase">
-            <span>Add</span>
-            <button onClick={increase}>+</button>
-          </div>
-          <div className="reset">
-            <span>Reset</span>
-            <button onClick={reset}>-</button>
-          </div>
-          <div className="remove">
-            <span>Remove</span>
-            <button onClick={remove}>-</button>
-          </div>
+    <div className="container text-center">
+      <h2>
+        My name is {firstName} {lastName} and I'm a {job}
+      </h2>
+      <div className="input-container text-center">
+        <div className="fisrt-name input">
+          <label>First Name</label>
+          <input
+            type="text"
+            placeholder="Enter your first name"
+            onChange={changeFirstNameHandler}
+          />
+        </div>
+        <div className="last-name input">
+          <label>Last Name</label>
+          <input
+            type="text"
+            placeholder="Enter your last name"
+            onChange={changeLastNameHandler}
+          />
+        </div>
+        <div className="job input">
+          <label>Job</label>
+          <input
+            type="text"
+            placeholder="Enter your job"
+            onChange={changeJobHandler}
+          />
         </div>
       </div>
     </div>
